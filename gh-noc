@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-gh_noc_message_on_success="${GH_NOC_MESSAGE_ON_SUCCESS:-GitHub Actions Completed}"
-gh_noc_message_on_failure="${GH_NOC_MESSAGE_ON_FAILURE:-GitHub Actions Failed}"
+gh_noc_message_on_success="${GH_NOC_MESSAGE_ON_SUCCESS:-GitHub Actions checks are passed.}"
+gh_noc_message_on_failure="${GH_NOC_MESSAGE_ON_FAILURE:-GitHub Actions checks are failed.}"
 gh_noc_sound_on_success="${GH_NOC_SOUND_ON_SUCCESS:-default}"
 gh_noc_sound_on_failure="${GH_NOC_SOUND_ON_FAILURE:-default}"
 pull_request_identifier="$1"
