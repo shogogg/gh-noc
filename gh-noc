@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+gh_noc_message_on_success="${GH_NOC_MESSAGE_ON_SUCCESS:-GitHub Actions Completed}"
+gh_noc_message_on_failure="${GH_NOC_MESSAGE_ON_FAILURE:-GitHub Actions Failed}"
+gh_noc_sound_on_success="${GH_NOC_SOUND_ON_SUCCESS:-default}"
+gh_noc_sound_on_failure="${GH_NOC_SOUND_ON_FAILURE:-default}"
+pull_request_identifier="$1"
+
+# Check if terminal-notifier command is available
+if ! type terminal-notifier > /dev/null; then
+  echo "terminal-notifier command not found. Please install terminal-notifier."
+  exit 1
+fi
+
+if gh pr checks --fail-fast --watch "$pull_request_identifier" > /dev/null; then
+    terminal-notifier -message "$gh_noc_message_on_success" -sound "$gh_noc_sound_on_success"
+    exit 0
+else
+    terminal-notifier -message "$gh_noc_message_on_failure" -sound "$gh_noc_sound_on_failure"
+    exit 1
+fi
